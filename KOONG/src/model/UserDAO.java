@@ -341,11 +341,92 @@ public class UserDAO {
 				e.printStackTrace();
 			}finally {
 				close();
+			}return al;
+		}	
+		
+		
+		public ArrayList<UserDTO> havekoong(String nick){
+			ArrayList<UserDTO> al = new ArrayList<>();
+			
+			getCon();
+			
+			String sql = "select mk.koong_name, ki.koong_rate , mk.koong_power from my_koong mk , koong_info ki where mk.koong_num = ki.koong_num and mk.id = ?";
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, nick);
+				
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					String name = rs.getString(1);
+					String rate = rs.getString(2);
+					int power = rs.getInt(3);
+					
+					UserDTO dto = new UserDTO(name,rate,power);
+					al.add(dto);
+				}
+				
+				
+				
+			}catch (Exception e){
+				e.printStackTrace();
+			}finally {
+				close();
 			}
-			
-			
+					
 			return al;
 		}
+		public void represent(String ya,String nick) {
+
+			getCon();
+			
+			String sql = "update user_info set main_char =(select koong_num from koong_info where koong_name = ?) where id = ?";
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, ya);
+				psmt.setString(2, nick);
+				
+				cnt = psmt.executeUpdate();
+				
+				
+			}catch (Exception e){
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+					
+		}
+		public void zoom(String ya) {
+			
+			Ascii as = new Ascii();
+			
+			getCon();
+			int num=0;
+			
+			String sql = "select koong_num from koong_info where koong_name = ?";
+			try {
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, ya);
+			
+				rs = psmt.executeQuery();
+				num =rs.getInt(1);
+				
+				while(rs.next()) {
+					num = rs.getInt(1);	
+				}
+				as.ascii(num);
+				
+			}catch (Exception e){
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		}
+			
+			
+		
 		
 		public void PlusCoupon(String nick){//이길시 쿠폰 1개 지급.
 			getCon();

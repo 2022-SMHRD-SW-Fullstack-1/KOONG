@@ -87,7 +87,7 @@ public class koong_main {
 					System.out.println("=====================================================================================");
 				
 			}else if(select==3) {
-				con.my_Koong();
+				con.my_Koong(nick);
 			}else if(select==4) {
 				con.ranking();
 			}

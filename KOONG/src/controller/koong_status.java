@@ -34,11 +34,36 @@ public class koong_status implements koongstatus {
 	}
 
 	@Override
-	public void my_Koong() {
+	public void my_Koong(String nick) {
 		
-		System.out.println("선수:");
-		System.out.println("능력:");
+		ArrayList<UserDTO> resultlist = new ArrayList<>();
 		
+		resultlist = dao.havekoong(nick);
+		
+		System.out.println("[쿵야이름]\t[쿵야등급]\t[쿵야파워]");
+		for(int i =0; i<resultlist.size(); i++) {
+			System.out.print(resultlist.get(i).getKoong_name()+"\t\t");
+			System.out.print("   "+resultlist.get(i).getKoong_rate()+"\t\t");
+			System.out.print("   "+resultlist.get(i).getKoong_power());
+			System.out.println();
+		}
+		Ascii as = new Ascii();
+		while(true) {
+			System.out.println("===========================================");
+			System.out.println("    [1]대표 쿵야 설정        [2]창 닫기");
+			System.out.println("===========================================");
+			int choice = sc.nextInt();
+			if(choice==1) {
+				System.out.println("대표로 설정할 쿵야를 불러주세요!!");
+				String ya = sc.next();
+				dao.represent(ya,nick);
+				System.out.println(ya+"는 이제부터 대표쿵야!!");
+				
+			}else if(choice == 2) {
+				break;
+			}
+			
+		}
 		
 	}
 
