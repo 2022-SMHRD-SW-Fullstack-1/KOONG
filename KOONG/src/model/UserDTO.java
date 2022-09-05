@@ -11,8 +11,6 @@ public class UserDTO {
 		return id;
 	}
 
-
-
 	public UserDTO(String id) {
 		this.id = id;
 	}

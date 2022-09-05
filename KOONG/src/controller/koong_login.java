@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
-
 import model.UserDAO;
 import model.UserDTO;
 
@@ -19,17 +17,9 @@ public class koong_login {
 		return cnt;
 	}
 	
-	public ArrayList<UserDTO> conSelect() {
-		ArrayList<UserDTO> al= new ArrayList<>();
-		
-		al = dao.select();
-		
-		return al;
-	}
-	
 	public String conLogin(String id, String pw) {
-		String nick = dao.login(id, pw);
+		String loginid = dao.login(id, pw);
 
-		return nick;
+		return loginid;
 	}
 }

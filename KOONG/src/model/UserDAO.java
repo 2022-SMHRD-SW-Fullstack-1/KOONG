@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-
-import jdbc_model.MemberDTO;
 
 public class UserDAO {
 	// DAO : data Access Object
@@ -85,7 +82,7 @@ public class UserDAO {
 		// [2] 로그인
 		// -db접속 - sql문장 실행 - 연결종료
 		public String login(String id, String pw) {
-			String id = ""; //결과값 리턴을 위한 변수
+			String log = ""; //결과값 리턴을 위한 변수
 			
 			getCon();
 
@@ -100,14 +97,15 @@ public class UserDAO {
 				rs = psmt.executeQuery();
 
 				if (rs.next()) {
-					id = rs.getString(1);
+					log = rs.getString(1);
 				}else {
-					id = null;
+					log = null;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				close();
 			}
-			return id;
+			return log;
 		}
+}
