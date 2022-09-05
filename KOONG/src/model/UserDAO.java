@@ -236,16 +236,62 @@ public class UserDAO {
 		}
 		
 		
-		public void mainkoong(int 랭킹) {
-			// 랭킹을 매개변수로 받아 매개변수에 적힌 랭킹과 같은 랭킹을 가진
-			// 아이디의 대표쿵야를 출력
+		public ArrayList<UserDTO> main_koong() {
 			
-//			"select id from user name where "
-//			.setString(1);		//해당 랭킹의 아이디
-//			select main_char from user_id where id = ?//
-//			.setString(1);		//해당 아이디의 대표쿵야 번호
-//			ascii(해당 아이디의 대표쿵야 번호)
+			ArrayList<UserDTO> al = new ArrayList<>();
 			
+			getCon();
+			
+			String sql = "select id, koong_cnt from user_info order by koong_cnt desc";
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					String id = rs.getString("id");
+					int cnt = rs.getInt("koong_cnt");
+					
+					UserDTO dto = new UserDTO(id,cnt);
+					al.add(dto);
+				}
+			}catch (Exception e){
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			
+			
+			return al;
+		}
+		public ArrayList<UserDTO> myMainChar() {
+			
+			ArrayList<UserDTO> al = new ArrayList<>();
+			
+			getCon();
+			
+			String sql = "select main_char from user_info order by koong_cnt desc";
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+				
+				rs = psmt.executeQuery();
+				
+				while(rs.next()) {
+					int main_char = rs.getInt("main_char");
+					
+					UserDTO dto = new UserDTO(main_char);
+					al.add(dto);
+				}
+			}catch (Exception e){
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			
+			
+			return al;
 		}
 		
 		
