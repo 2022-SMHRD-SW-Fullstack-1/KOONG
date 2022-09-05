@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.koong_login;
+import controller.koong_play;
 import controller.koong_status;
 
 public class koong_main {
@@ -12,6 +13,8 @@ public class koong_main {
 
 		koong_login log = new koong_login();
 		koong_status con = new koong_status();
+		koong_play pl = new koong_play();
+		
 		int result = 0;
 		String nick = "";
 		while (true) { // 메인화면
@@ -65,7 +68,7 @@ public class koong_main {
 			int select = sc.nextInt();
 			
 			if(select==1) {
-				
+				pl.play(nick);
 			}else if(select==2) {
 				con.draw(nick);
 			}else if(select==3) {

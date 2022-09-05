@@ -205,35 +205,66 @@ public class UserDAO {
 		
 			
 		}
-		public ArrayList<koongDTO> select() {
-			ArrayList<koongDTO> al = new ArrayList<>();
-			// 쿵야의 정보를 담을 수 있는 arraylist 만들기.
+
+		// 조건에 맞는 선수 표시를 위한 sql문 작성
+
+		public String enemy(int num) {
+			String player = ""; // 결과값 리턴을 위한 변수
+
 			getCon();
 
-			String sql = "select ID, KOONG_NUM, KOONG_NAME, KOONG_POWER from MY_KOONG ORDER BY KOONG_POWER";
+			String sql = "select koong_name from koong_info where koong_num = ?";
 
 			try {
 				psmt = conn.prepareStatement(sql);
 
+				psmt.setInt(1, num);
+
 				rs = psmt.executeQuery();
 
-				while (rs.next()) {
-					String idd = rs.getString("id");
-					int num = rs.getInt("");
-					String name = rs.getString(" ");
-					int power = rs.getInt("");
-
-					koongDTO dto = new koongDTO(idd, num, name, power);
-					al.add(dto);
-
+				if (rs.next()) {
+					player = rs.getString(1);
+				} else {
+					player = null;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				close();
 			}
-			return al;
+			return player;
 		}
+
+		public ArrayList<koongDTO> select(String nick) {
+				ArrayList<koongDTO> al = new ArrayList<>();
+				// 쿵야의 정보를 담을 수 있는 arraylist 만들기.
+				getCon();
+
+				String sql = "select u.ID, k.KOONG_NUM, k.KOONG_NAME, k.KOONG_POWER from MY_KOONG k,user_info u WHERE u.id = k.id and = ? ORDER BY KOONG_POWER";
+
+				try {
+					psmt = conn.prepareStatement(sql);
+					psmt.setString(1, nick);
+					
+					rs = psmt.executeQuery();
+
+					while (rs.next()) {
+						String idd = rs.getString("id");
+						int num = rs.getInt("");
+						String name = rs.getString(" ");
+						int power = rs.getInt("");
+
+						koongDTO dto = new koongDTO(idd, num, name, power);
+						al.add(dto);
+
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					close();
+				}
+				return al;
+			}
 		
 		
 		public ArrayList<UserDTO> main_koong() {
