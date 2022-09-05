@@ -347,7 +347,22 @@ public class UserDAO {
 			return al;
 		}
 		
-
+		public void PlusCoupon(String nick){//이길시 쿠폰 1개 지급.
+			getCon();
+		try {
+		String sql = "update user_info set coupon = (select coupon+1 from user_info where id=?) where id = ?";
+		psmt = conn.prepareStatement(sql);
+		
+		psmt.setString(1, nick);
+		psmt.setString(2, nick);
+		
+		cnt = psmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+}
 		
 		
 }
