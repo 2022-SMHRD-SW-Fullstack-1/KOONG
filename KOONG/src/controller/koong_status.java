@@ -33,7 +33,9 @@ public class koong_status implements koongstatus {
 
 	@Override
 	public void ranking() {
-		
+		for(int i = 1 ; i<=5 ; i++) {
+			dao.mainkoong(1);
+		}
 	}
 
 }
