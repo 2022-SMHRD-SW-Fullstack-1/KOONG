@@ -33,6 +33,9 @@ public class koong_status implements koongstatus {
 	@Override
 	public void my_Koong() {
 		
+		System.out.println("선수:");
+		System.out.println("능력:");
+		
 		
 	}
 
