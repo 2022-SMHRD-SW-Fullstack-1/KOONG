@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
+
+import controller.koong_login;
 
 public class UserDAO {
 	// DAO : data Access Object
@@ -13,6 +16,7 @@ public class UserDAO {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		PreparedStatement psmt2 = null; //쿠폰 담아줄 객체 
+		PreparedStatement psmt3 = null;
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		int cnt = 0;
@@ -120,44 +124,115 @@ public class UserDAO {
 			return log;
 		}
 		
-		public String browse_koong() {
-			String koong_name = "";
-			String koong_rate = "";
-			int koong_stat = 0;
-			//ArrayList<UserDTO> addList = new ArrayList<>();
+		
+		
+		public int coupon_cnt(String nick) {
+			
 			
 			getCon();
 			
-			String sql = "select koong_name, koong_rate from koong_info where koong_num = ? ";
+			String sql = "select coupon from user_info where user_id = ?";
 			
 			
 			try {
 				psmt = conn.prepareStatement(sql);
+				
+				psmt.setString(1, nick);
+				
+				rs = psmt.executeQuery();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
+			
+			return 0;
+		}
+		
+		public String browse_koong(String nick) {
+			koong_login log = new koong_login();
+			UserDTO con = new UserDTO(null);
+			
+			String koong_name = "";
+			String koong_rate = "";
+			int koong_power = 0;
+			
+			
+			getCon();
+			
+			
+			try {
+				String sql = "select koong_name, koong_rate from koong_info where koong_num = ? ";
+				psmt = conn.prepareStatement(sql);
+				
 				Random rd = new Random();
-				int newKoong = rd.nextInt(12)+1;
+				int koong_num = rd.nextInt(12)+1;
 				
-				psmt.setInt(1,newKoong);
-				
+				psmt.setInt(1,koong_num);
+			
 				rs = psmt.executeQuery();
 				
 				if(rs.next()) {
 					
 					koong_name = rs.getString(1);
 					koong_rate = rs.getString(2);
-					//koong_stat = rd.nextInt(100)+1;
 					
+					if(koong_rate.equals("S")) {
+						koong_power = rd.nextInt(40)+61;
+					}else if(koong_rate.equals("A")) {
+						koong_power = rd.nextInt(60)+21;
+					}else if(koong_rate.equals("F")) {
+						koong_power = rd.nextInt(40)+1;
+					}
 					
 				}
+				String sql2 = "insert into my_koong(koong_num,koong_name,koong_power,id) values(?,?,?,?)";
+				psmt2 = conn.prepareStatement(sql2);
+				psmt2.setInt(1, koong_num);
+				psmt2.setString(2, koong_name );
+				psmt2.setInt(3, koong_power);
+				psmt2.setString(4, nick);
 				
-				
+				cnt = psmt2.executeUpdate();
+	
+			
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				close();
-			} return koong_name + "\t"+ koong_rate +"\t";			
+			} return koong_name + "\t"+ koong_rate +"\n능력치 : "+koong_power;			
 		
 			
+		}
+		public ArrayList<koongDTO> select() {
+			ArrayList<koongDTO> al = new ArrayList<>();
+			// 쿵야의 정보를 담을 수 있는 arraylist 만들기.
+			getCon();
+
+			String sql = "select ID, KOONG_NUM, KOONG_NAME, KOONG_POWER from MY_KOONG ORDER BY KOONG_POWER";
+
+			try {
+				psmt = conn.prepareStatement(sql);
+
+				rs = psmt.executeQuery();
+
+				while (rs.next()) {
+					String idd = rs.getString("id");
+					int num = rs.getInt("");
+					String name = rs.getString(" ");
+					int power = rs.getInt("");
+
+					koongDTO dto = new koongDTO(idd, num, name, power);
+					al.add(dto);
+
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return al;
 		}
 		
 		

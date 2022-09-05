@@ -9,15 +9,15 @@ public class koong_status implements koongstatus {
 	UserDAO dao = new UserDAO();
 		
 	@Override
-	public void draw() {
+	public void draw(String nick) {
 		
-		System.out.print("쿠폰을 사용하시겠습니까? (y/n) >> ");
-		String cpn_select = sc.next();
 		
-		System.out.println("아스키코드");
-		System.out.println(dao.browse_koong());
-		System.out.print("능력치 : ");
-		
+			System.out.print("쿠폰을 사용하시겠습니까? (y/n) >> ");
+			String cpn_select = sc.next();
+			
+			
+			System.out.println("아스키코드");
+			System.out.println(dao.browse_koong(nick));
 		
 		
 		
