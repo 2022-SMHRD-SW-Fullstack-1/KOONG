@@ -57,8 +57,8 @@ public class koong_main {
 		System.out.println("============================================================");
 		
 		while(true) {
-			System.out.println("남은 뽑기권 : " );
 			
+			//
 			
 			
 			

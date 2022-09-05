@@ -71,8 +71,9 @@ public class UserDAO {
 				psmt.setString(1, id);
 				psmt.setString(2, pw);			
 				
-				psmt2.executeUpdate();
+				
 				cnt = psmt.executeUpdate();
+				psmt2.executeUpdate();
 	
 
 			} catch (Exception e) {
@@ -101,7 +102,7 @@ public class UserDAO {
 				psmt.setString(2, pw);
 
 				rs = psmt.executeQuery();
-
+//
 				
 				if (rs.next()) {
 					log = rs.getString(1);
