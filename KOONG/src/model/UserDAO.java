@@ -161,4 +161,17 @@ public class UserDAO {
 		}
 		
 		
+		public void mainkoong(int 랭킹) {
+			// 랭킹을 매개변수로 받아 매개변수에 적힌 랭킹과 같은 랭킹을 가진
+			// 아이디의 대표쿵야를 출력
+			
+//			"select id from user name where "
+//			.setString(1);		//해당 랭킹의 아이디
+//			select main_char from user_id where id = ?//
+//			.setString(1);		//해당 아이디의 대표쿵야 번호
+//			ascii(해당 아이디의 대표쿵야 번호)
+			
+		}
+		
+		
 }
