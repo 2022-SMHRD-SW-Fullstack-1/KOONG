@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class UserDAO {
 	// DAO : data Access Object
@@ -12,6 +14,7 @@ public class UserDAO {
 		PreparedStatement psmt = null;
 		PreparedStatement psmt2 = null; //쿠폰 담아줄 객체 
 		ResultSet rs = null;
+		ResultSet rs2 = null;
 		int cnt = 0;
 		int cpn = 0;
 
@@ -116,4 +119,46 @@ public class UserDAO {
 			}
 			return log;
 		}
+		
+		public String browse_koong() {
+			String koong_name = "";
+			String koong_rate = "";
+			int koong_stat = 0;
+			//ArrayList<UserDTO> addList = new ArrayList<>();
+			
+			getCon();
+			
+			String sql = "select koong_name, koong_rate from koong_info where koong_num = ? ";
+			
+			
+			try {
+				psmt = conn.prepareStatement(sql);
+			
+				Random rd = new Random();
+				int newKoong = rd.nextInt(12)+1;
+				
+				psmt.setInt(1,newKoong);
+				
+				rs = psmt.executeQuery();
+				
+				if(rs.next()) {
+					
+					koong_name = rs.getString(1);
+					koong_rate = rs.getString(2);
+					//koong_stat = rd.nextInt(100)+1;
+					
+					
+				}
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			} return koong_name + "\t"+ koong_rate +"\t";			
+		
+			
+		}
+		
+		
 }
