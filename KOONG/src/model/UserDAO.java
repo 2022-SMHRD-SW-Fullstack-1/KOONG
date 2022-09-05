@@ -10,8 +10,10 @@ public class UserDAO {
 		// 데이터베이스의 data에 접근을 위한 객체
 		Connection conn = null;
 		PreparedStatement psmt = null;
+		PreparedStatement psmt2 = null; //쿠폰 담아줄 객체 
 		ResultSet rs = null;
 		int cnt = 0;
+		int cpn = 0;
 
 		// (메소드로 로직 정리하기)
 		public void getCon() {
@@ -59,15 +61,19 @@ public class UserDAO {
 		public int insert(String id, String pw) {
 			getCon();
 
-			String sql = "insert into user_info values(?, ?)";
-
+			String sql = "insert into user_info(ID, PASSWORD) values(?, ?)";
+			String sql2 = "update user_info set coupon = 5 where coupon is null";
+			
 			try {
 				psmt = conn.prepareStatement(sql);
+				psmt2 = conn.prepareStatement(sql2);
 
 				psmt.setString(1, id);
-				psmt.setString(2, pw);
+				psmt.setString(2, pw);			
 				
+				psmt2.executeUpdate();
 				cnt = psmt.executeUpdate();
+	
 
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -96,6 +102,7 @@ public class UserDAO {
 
 				rs = psmt.executeQuery();
 
+				
 				if (rs.next()) {
 					log = rs.getString(1);
 				}else {
