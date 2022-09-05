@@ -21,13 +21,18 @@ public class koong_main {
 		String nick = "";
 		while (true) { // 메인화면
 
-			System.out.print("[1]로그인 [2]회원가입");
+			
+			System.out.print("[1]로그인 \t [2]회원가입    >>   ");
 			int select = sc.nextInt();
 
 			if (select == 1) {
-				System.out.println("로그인 아이디 : ");
+				
+				System.out.println("==========================================");
+				System.out.println("Ｏ(≧∇≦)Ｏ\t\t 로그인 \t\to(≧∇≦o)");
+				System.out.println("==========================================");
+				System.out.print("로그인 할 아이디 : ");
 				String id = sc.next();
-				System.out.println("로그인 패스워드 : ");
+				System.out.print("로그인 할 패스워드 : ");
 				String pw = sc.next();
 
 				nick = log.conLogin(id, pw);
@@ -38,16 +43,19 @@ public class koong_main {
 				} else {
 					System.out.println("로그인 실패");
 				}
+				
 			} else if (select == 2) {
-				System.out.println("====회원가입 기능====");
-				System.out.println("아이디 : ");
+				System.out.println("==========================================");
+				System.out.println("Ｏ(≧∇≦)Ｏ\t\t 회원가입 \t\to(≧∇≦o)");
+				System.out.println("==========================================");
+				System.out.println("가입 할 아이디 : ");
 				String id = sc.next();
-				System.out.println("패스워드 : ");
+				System.out.println("가입 할 패스워드 : ");
 				String pw = sc.next();
 
 				result = log.conInsert(id, pw);
 				if (result > 0) {
-					System.out.println("가입 성공");
+					System.out.println("✿˘◡˘✿\t\t 가입 완료!! 환영합니다 \t\t✿˘◡˘✿ ");
 				} else {
 					System.out.println("가입 실패");
 				}
@@ -76,6 +84,7 @@ public class koong_main {
 					con.draw(nick);
 					System.out.print("남은 쿠폰 개수 :  ");
 					System.out.println(dao.coupon_cnt(nick));
+					System.out.println("=====================================================================================");
 				
 			}else if(select==3) {
 				con.my_Koong();

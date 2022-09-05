@@ -126,8 +126,7 @@ public class UserDAO {
 		}
 		
 		
-		
-		public int coupon_cnt(String nick) {
+		public int coupon_cnt(String nick) { // 쿠폰 개수 불러오는 메소드
 			koong_login log = new koong_login();
 			UserDTO con = new UserDTO(null);
 			
@@ -136,7 +135,6 @@ public class UserDAO {
 			getCon();
 			
 			String sql = "select coupon from user_info where id = ?";
-			
 			
 			try {
 				psmt = conn.prepareStatement(sql);
@@ -152,15 +150,15 @@ public class UserDAO {
 					
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			
-			
+			}	
 			return coupon;
 		}
 		
-		public String browse_koong(String nick) {
+		
+		public void browse_koong(String nick) { // 쿵야 랜덤으로 뽑는 메소드
 			koong_login log = new koong_login();
 			UserDTO con = new UserDTO(null);
+			Ascii ac = new Ascii();
 			
 			String koong_name = "";
 			String koong_rate = "";
@@ -168,7 +166,6 @@ public class UserDAO {
 			
 			
 			getCon();
-			
 			
 			try {
 				String sql = "select koong_name, koong_rate from koong_info where koong_num = ? ";
@@ -218,12 +215,15 @@ public class UserDAO {
 				
 				cnt = psmt4.executeUpdate();
 	
+				
+				ac.ascii(koong_num);
+				System.out.println( koong_name + "\t"+ koong_rate +"\n능력치 : "+koong_power);	
 			
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
 				close();
-			} return koong_name + "\t"+ koong_rate +"\n능력치 : "+koong_power;			
+			} 		
 		
 			
 		}
