@@ -3,7 +3,7 @@ package controller;
 public class koong_status implements koongstatus {
 
 	@Override
-	public void player() {
+	public void draw() {
 		// TODO Auto-generated method stub
 		
 	}
@@ -16,7 +16,6 @@ public class koong_status implements koongstatus {
 
 	@Override
 	public void ranking() {
-		// TODO Auto-generated method stub
 		
 	}
 
