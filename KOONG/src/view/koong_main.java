@@ -5,6 +5,7 @@ import java.util.Scanner;
 import controller.koong_login;
 import controller.koong_play;
 import controller.koong_status;
+import model.UserDAO;
 
 public class koong_main {
 
@@ -14,6 +15,7 @@ public class koong_main {
 		koong_login log = new koong_login();
 		koong_status con = new koong_status();
 		koong_play pl = new koong_play();
+		UserDAO dao = new UserDAO();
 		
 		int result = 0;
 		String nick = "";
@@ -70,7 +72,11 @@ public class koong_main {
 			if(select==1) {
 				pl.play(nick);
 			}else if(select==2) {
-				con.draw(nick);
+		
+					con.draw(nick);
+					System.out.print("남은 쿠폰 개수 :  ");
+					System.out.println(dao.coupon_cnt(nick));
+				
 			}else if(select==3) {
 				con.my_Koong();
 			}else if(select==4) {

@@ -17,6 +17,7 @@ public class UserDAO {
 		PreparedStatement psmt = null;
 		PreparedStatement psmt2 = null; //쿠폰 담아줄 객체 
 		PreparedStatement psmt3 = null;
+		PreparedStatement psmt4 = null;
 		ResultSet rs = null;
 		ResultSet rs2 = null;
 		int cnt = 0;
@@ -127,11 +128,14 @@ public class UserDAO {
 		
 		
 		public int coupon_cnt(String nick) {
+			koong_login log = new koong_login();
+			UserDTO con = new UserDTO(null);
 			
+			int coupon = 0;
 			
 			getCon();
 			
-			String sql = "select coupon from user_info where user_id = ?";
+			String sql = "select coupon from user_info where id = ?";
 			
 			
 			try {
@@ -141,13 +145,17 @@ public class UserDAO {
 				
 				rs = psmt.executeQuery();
 				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+					if(rs.next()) {
+					
+					coupon = rs.getInt(1);	
+					}
+					
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
 			
-			return 0;
+			return coupon;
 		}
 		
 		public String browse_koong(String nick) {
@@ -195,6 +203,20 @@ public class UserDAO {
 				psmt2.setString(4, nick);
 				
 				cnt = psmt2.executeUpdate();
+				
+				String sql3 = "update user_info set coupon = (select coupon-1 from user_info where id=?) where id = ?";
+				psmt3 = conn.prepareStatement(sql3);
+				psmt3.setString(1, nick);
+				psmt3.setString(2, nick);
+				
+				cnt = psmt3.executeUpdate();
+				
+				String sql4 = "update user_info set koong_cnt = (select koong_cnt+1 from user_info where id=?) where id = ?";
+				psmt4 = conn.prepareStatement(sql4);
+				psmt4.setString(1, nick);
+				psmt4.setString(2, nick);
+				
+				cnt = psmt4.executeUpdate();
 	
 			
 			} catch (Exception e) {
@@ -240,7 +262,7 @@ public class UserDAO {
 				// 쿵야의 정보를 담을 수 있는 arraylist 만들기.
 				getCon();
 
-				String sql = "select u.ID, k.KOONG_NUM, k.KOONG_NAME, k.KOONG_POWER from MY_KOONG k,user_info u WHERE u.ID = k.ID and k.ID= ? ORDER BY KOONG_POWER desc";
+				String sql = "select u.ID, k.KOONG_NUM, k.KOONG_NAME, k.KOONG_POWER from MY_KOONG k,user_info u WHERE u.id = k.id and = ? ORDER BY KOONG_POWER";
 
 				try {
 					psmt = conn.prepareStatement(sql);
@@ -249,10 +271,10 @@ public class UserDAO {
 					rs = psmt.executeQuery();
 
 					while (rs.next()) {
-						String idd = rs.getString(1);
-						int num = rs.getInt(2);
-						String name = rs.getString(3);
-						int power = rs.getInt(4);
+						String idd = rs.getString("id");
+						int num = rs.getInt("");
+						String name = rs.getString(" ");
+						int power = rs.getInt("");
 
 						koongDTO dto = new koongDTO(idd, num, name, power);
 						al.add(dto);

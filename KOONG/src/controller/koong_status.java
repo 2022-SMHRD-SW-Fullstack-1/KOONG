@@ -16,13 +16,18 @@ public class koong_status implements koongstatus {
 	@Override
 	public void draw(String nick) {
 		
-		
-			System.out.print("쿠폰을 사용하시겠습니까? (y/n) >> ");
-			String cpn_select = sc.next();
+			if(dao.coupon_cnt(nick)>0) {
+				System.out.print("쿠폰을 사용하시겠습니까? (y/n) >> ");
+				String cpn_select = sc.next();
+				
+				
+				System.out.println("아스키코드");
+				System.out.println(dao.browse_koong(nick));
+				
+			}else {
+				System.out.println("쿠폰이 없습니다");
+			}
 			
-			
-			System.out.println("아스키코드");
-			System.out.println(dao.browse_koong(nick));
 		
 		
 		
