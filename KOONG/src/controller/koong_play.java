@@ -27,7 +27,7 @@ public class koong_play {
 
 		System.out.println(player.get(0).getId() + "님의 보유 선수 목록");
 		for (int i = 0; i < player.size(); i++) {
-			System.out.print("선택" + (i + 1) + player.get(i).getNum() + ". " + player.get(i).getName());
+			System.out.print("선택" + (i + 1) +" "+player.get(i).getNum() + ". " + player.get(i).getName());
 			System.out.println(" / 타 격 력 : " + player.get(i).getPower() + "\n");
 		}
 
@@ -35,10 +35,10 @@ public class koong_play {
 		ArrayList<koongDTO> list = new ArrayList<>();
 		System.out.println("1번부터 5번 타석까지 선택해주세요.(선택번호를 입력)");
 		for (int i = 0; i < 5; i++) {
-			System.out.println(i + "번째 타자 선발 : ");
+			System.out.println(i+1 + "번째 타자 선발 : ");
 			int select = sc.nextInt();
 			list.add(player.get(select - i));
-			System.out.println(i + "번째 타자 : " + player.get(select - 1).getName());
+			System.out.println(i+1 + "번째 타자 : " + player.get(select - 1).getName()+"\n");
 		}
 
 		while (true) {
@@ -60,7 +60,7 @@ public class koong_play {
 			} else if (enemy_num <= 12) {
 				enemy_status = rd.nextInt(49) + 20;
 			}
-			System.out.print("투 구 력 : " + enemy_status);
+			System.out.print("투 구 력 : " + enemy_status+"\n");
 
 			// 내선수와 적투수의 능력치 차이 계산 후(스트라이크, 안타, 홈런 계산)
 			int dif = 0;
