@@ -124,6 +124,7 @@ public class koong_play {
 						System.out.println("Strike!");// 스트라이크
 						sct++;
 					} else if (rate <= 10) {// 9나 10이 나올 경우.
+						mc.hitsound();
 						System.out.println("이 투구를 쳐내네요!!!");// 안타
 						res = 'a';
 						sct = 0;
@@ -138,6 +139,7 @@ public class koong_play {
 				if (enemy_win_dif == 0 && my_win_dif <= 15) {
 					int rate = rd.nextInt(9) + 1; // 내가 우세임에도 스트라이크를 당할 확률
 					if (rate < 8) {
+						mc.hitsound();
 						System.out.println("공을 쳐냅니다! 안타!");// 안타
 						res = 'a';
 						sct = 0;
@@ -149,12 +151,14 @@ public class koong_play {
 						sct++;
 					}
 				} else if (enemy_win_dif == 0 && my_win_dif <= 50) {
+					mc.hitsound();
 					System.out.println("안타를~ 쳤습니다!");// 안타
 					res = 'a';
 					sct = 0;
 					time();
 					break;
 				} else if (enemy_win_dif == 0 && my_win_dif > 50) {
+					mc.hitsound();
 					mc.homerunsound();
 					System.out.println("담장을 넘어갑니다!! 홈런~!");// 홈런
 					res = 'h';
