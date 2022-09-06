@@ -123,6 +123,7 @@ public class koong_play {
 						System.out.println("이 투구를 쳐내네요!!!");// 안타
 						res = 'a';
 						sct = 0;
+						time();
 						break;
 					}
 				} else if (my_win_dif == 0 && enemy_win_dif > 15) {// 15보다 더 차이나면 스트라이크
@@ -135,6 +136,7 @@ public class koong_play {
 						System.out.println("공을 쳐냅니다! 안타!");// 안타
 						res = 'a';
 						sct = 0;
+						time();
 						break;
 					} else if (rate <= 10) {// 8,9,10이 나올 경우.
 						System.out.println("Strike!");// 스트라이크
@@ -144,15 +146,21 @@ public class koong_play {
 					System.out.println("안타를~ 쳤습니다!");// 안타
 					res = 'a';
 					sct = 0;
+					time();
 					break;
 				} else if (enemy_win_dif == 0 && my_win_dif > 50) {
 					System.out.println("담장을 넘어갑니다!! 홈런~!");// 홈런
 					res = 'h';
 					sct = 0;
+					time();
+					time();
 					break;
 				}
 
-			}
+				
+				
+			}//타격 for문 끝
+			
 			if (sct == 3) {// 스트라이크 3번 맞았을 때 아웃카운트 증가
 				System.out.println("삼진 아웃!");
 				oct++;
@@ -193,6 +201,7 @@ public class koong_play {
 				break;
 			}
 
+			
 		} // while문 끝 중괄호
 
 	}// play 메서드 종료 중괄호
