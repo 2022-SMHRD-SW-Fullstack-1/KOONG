@@ -6,6 +6,7 @@ import controller.koong_login;
 import controller.koong_play;
 import controller.koong_status;
 import model.UserDAO;
+import music.musiccontroller;
 
 public class koong_main {
 
@@ -16,11 +17,13 @@ public class koong_main {
 		koong_status con = new koong_status();
 		koong_play pl = new koong_play();
 		UserDAO dao = new UserDAO();
+		musiccontroller mc = new musiccontroller();
 		
 		int result = 0;
 		String nick = "";
 		while (true) { // 메인화면
 
+			mc.mainplay();
 			
 			System.out.print("[1]로그인 \t [2]회원가입    >>   ");
 			int select = sc.nextInt();
@@ -78,6 +81,7 @@ public class koong_main {
 			int select = sc.nextInt();
 			
 			if(select==1) {
+				mc.ingameplay();
 				pl.play(nick);
 			}else if(select==2) {
 		
