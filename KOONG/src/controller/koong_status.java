@@ -90,7 +90,7 @@ public class koong_status implements koongstatus {
 			}
 			
 		}else {
-			for(int i = 0 ; i<=resultlist.size() ; i++) {
+			for(int i = 0 ; i<resultlist.size() ; i++) {
 				System.out.println("==============================\n");
 				System.out.println(i+1+"위 [ "+resultlist.get(i).getId()+" ]\n");
 				System.out.println("<<대표 캐릭터>>");
