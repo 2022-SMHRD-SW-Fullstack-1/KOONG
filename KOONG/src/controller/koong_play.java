@@ -105,7 +105,7 @@ public class koong_play {
 					System.out.println("주자 만루!");
 				}
 
-				System.out.println("\n1번을 눌러 타격하기.");// 타격음 효과 추가
+				System.out.println("\n9번을 눌러 타격하기.");// 타격음 효과 추가
 				int hit = sc.nextInt();
 				time();
 
