@@ -85,8 +85,9 @@ public class UserDAO {
 			psmt2.executeUpdate();
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("=====================================================================================");
+			System.out.println("\t๐·°(৹˃ᗝ˂৹)°·๐\t\t  이미 있는 아이디에요  \t\t๐·°(৹˃ᗝ˂৹)°·๐");
+			System.out.println("=====================================================================================");
 		} finally {
 			close();
 		}
