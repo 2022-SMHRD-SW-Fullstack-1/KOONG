@@ -30,9 +30,9 @@ public class koong_main {
 
 			if (select == 1) {
 				
-				System.out.println("==========================================");
-				System.out.println("Ｏ(≧∇≦)Ｏ\t\t 로그인 \t\to(≧∇≦o)");
-				System.out.println("==========================================");
+				System.out.println("=====================================================================================");
+				System.out.println("\t\tＯ(≧∇≦)Ｏ\t 로그인 \t\to(≧∇≦o)");
+				System.out.println("=====================================================================================");
 				System.out.print("로그인 할 아이디 : ");
 				String id = sc.next();
 				System.out.print("로그인 할 패스워드 : ");
@@ -50,9 +50,9 @@ public class koong_main {
 				}
 				
 			} else if (select == 2) {
-				System.out.println("==========================================");
-				System.out.println("Ｏ(≧∇≦)Ｏ\t\t 회원가입 \t\to(≧∇≦o)");
-				System.out.println("==========================================");
+				System.out.println("=====================================================================================");
+				System.out.println("\t\t     Ｏ(≧∇≦)Ｏ\t 회원가입 \to(≧∇≦o)");
+				System.out.println("=====================================================================================");
 				System.out.print("가입 할 아이디 : ");
 				String id = sc.next();
 				System.out.print("가입 할 패스워드 : ");
@@ -60,7 +60,9 @@ public class koong_main {
 
 				result = log.conInsert(id, pw);
 				if (result > 0) {
+					System.out.println("=====================================================================================");
 					System.out.println("✿˘◡˘✿\t\t 가입 완료!! 환영합니다 \t\t✿˘◡˘✿ ");
+					System.out.println("=====================================================================================");
 				} else {
 				
 					System.out.println("\t๐·°(৹˃ᗝ˂৹)°·๐\t\t  가입에 실패했어요  \t\t\t๐·°(৹˃ᗝ˂৹)°·๐");
