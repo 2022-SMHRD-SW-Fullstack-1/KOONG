@@ -204,11 +204,11 @@ public class UserDAO {
 				koong_name = rs.getString(1);
 				koong_rate = rs.getString(2);
 
-				if (koong_rate.equals("S")) {
+				if (koong_num == 1||koong_num == 2||koong_num == 3) {
 					koong_power = rd.nextInt(40) + 61;
-				} else if (koong_rate.equals("A")) {
+				} else if (koong_num == 4||koong_num == 5||koong_num == 6||koong_num == 7||koong_num == 8||koong_num == 9||koong_num == 10) {
 					koong_power = rd.nextInt(60) + 21;
-				} else if (koong_rate.equals("F")) {
+				} else if (koong_num == 11||koong_num == 12) {
 					koong_power = rd.nextInt(40) + 1;
 				}
 
@@ -461,12 +461,12 @@ public class UserDAO {
 	public void Training(String nick, int n1, int n2, int n3, int n4, int n5, int n6) {// 참여한 쿵야 능력치 1상승.
 		getCon();
 		try {
-			String sql1 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
-			String sql2 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
-			String sql3 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
-			String sql4 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
-			String sql5 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
-			String sql6 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
+			String sql1 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ? and koong_num = ?";
+			String sql2 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ? and koong_num = ?";
+			String sql3 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ? and koong_num = ?";
+			String sql4 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ? and koong_num = ?";
+			String sql5 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ? and koong_num = ?";
+			String sql6 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ? and koong_num = ?";
 
 			psmt = conn.prepareStatement(sql1);
 			psmt2 = conn.prepareStatement(sql2);
@@ -478,27 +478,33 @@ public class UserDAO {
 			psmt.setString(1, nick);
 			psmt.setInt(2, n1);
 			psmt.setString(3, nick);
+			psmt.setInt(4, n1);
 
 			psmt2.setString(1, nick);
 			psmt2.setInt(2, n2);
 			psmt2.setString(3, nick);
-
+			psmt2.setInt(4, n1);
+			
 			psmt3.setString(1, nick);
 			psmt3.setInt(2, n3);
 			psmt3.setString(3, nick);
-
+			psmt3.setInt(4, n1);
+			
 			psmt4.setString(1, nick);
 			psmt4.setInt(2, n4);
 			psmt4.setString(3, nick);
-
+			psmt4.setInt(4, n1);
+			
 			psmt5.setString(1, nick);
 			psmt5.setInt(2, n5);
 			psmt5.setString(3, nick);
-
+			psmt5.setInt(4, n1);
+			
 			psmt6.setString(1, nick);
 			psmt6.setInt(2, n5);
 			psmt6.setString(3, nick);
-
+			psmt6.setInt(4, n1);
+			
 			psmt.executeUpdate();
 			psmt2.executeUpdate();
 			psmt3.executeUpdate();
