@@ -28,6 +28,7 @@ public class musiccontroller {
 			musiclist.add(new musicmodel("outsound","music/out.mp3"));
 			musiclist.add(new musicmodel("strikesound","music/strike.mp3"));
 			musiclist.add(new musicmodel("homerunsound","music/homerun.mp3"));
+			musiclist.add(new musicmodel("hitsound","music/hit.mp3"));
 		}
 
 	public void mainplay() {
@@ -58,6 +59,9 @@ public class musiccontroller {
 	}
 	public void homerunsound() {
 		mp3.play(musiclist.get(4).getMusicPath());
+	}
+	public void hitsound() {
+		mp3.play(musiclist.get(5).getMusicPath());
 	}
 
 	

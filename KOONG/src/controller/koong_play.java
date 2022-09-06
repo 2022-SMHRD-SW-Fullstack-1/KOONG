@@ -45,6 +45,7 @@ public class koong_play {
 			list.add(player.get(select - 1));
 			System.out.println(i + 1 + "번째 타자 : " + player.get(select - 1).getName() + "\n");
 		}
+		
 
 		// 적 투수의 이름과 능력치, 아스키코드 ( 랜덤 생성 )
 		int enemy_num = rd.nextInt(11) + 1;
