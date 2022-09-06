@@ -7,12 +7,14 @@ import java.util.Scanner;
 import model.Ascii;
 import model.UserDAO;
 import model.koongDTO;
+import music.musiccontroller;
 
 public class koong_play {
 
 	Scanner sc = new Scanner(System.in);
 	Random rd = new Random();
 	Ascii ac = new Ascii();
+	musiccontroller mc = new musiccontroller();
 
 	UserDAO dao = new UserDAO();
 
@@ -102,7 +104,7 @@ public class koong_play {
 					System.out.print("○");
 				}
 
-				System.out.println("\n현재 점수는 " + score + "점");
+				System.out.print("\n현재 점수는 " + score + "점! ");
 				if (run_cnt == 1) {
 					System.out.println("주자 1루!");
 				} else if (run_cnt == 2) {
@@ -117,6 +119,7 @@ public class koong_play {
 				if (my_win_dif == 0 && enemy_win_dif <= 15) {
 					int rate = rd.nextInt(9) + 1; // 적이 우세임에도 안타를 칠 수도 있는 확률
 					if (rate < 9) {
+						mc.strikesound();
 						System.out.println("Strike!");// 스트라이크
 						sct++;
 					} else if (rate <= 10) {// 9나 10이 나올 경우.
@@ -127,6 +130,7 @@ public class koong_play {
 						break;
 					}
 				} else if (my_win_dif == 0 && enemy_win_dif > 15) {// 15보다 더 차이나면 스트라이크
+					mc.strikesound();
 					System.out.println("Strike!");// 스트라이크
 				}
 
@@ -139,6 +143,7 @@ public class koong_play {
 						time();
 						break;
 					} else if (rate <= 10) {// 8,9,10이 나올 경우.
+						mc.strikesound();
 						System.out.println("Strike!");// 스트라이크
 						sct++;
 					}
@@ -149,6 +154,7 @@ public class koong_play {
 					time();
 					break;
 				} else if (enemy_win_dif == 0 && my_win_dif > 50) {
+					mc.homerunsound();
 					System.out.println("담장을 넘어갑니다!! 홈런~!");// 홈런
 					res = 'h';
 					sct = 0;
@@ -157,11 +163,11 @@ public class koong_play {
 					break;
 				}
 
-				
-				
-			}//타격 for문 끝
-			
+			} // 타격 for문 끝
+
 			if (sct == 3) {// 스트라이크 3번 맞았을 때 아웃카운트 증가
+				time();
+				mc.outsound();
 				System.out.println("삼진 아웃!");
 				oct++;
 				sct = 0;
@@ -201,7 +207,6 @@ public class koong_play {
 				break;
 			}
 
-			
 		} // while문 끝 중괄호
 
 	}// play 메서드 종료 중괄호

@@ -83,6 +83,7 @@ public class koong_main {
 			if(select==1) {
 				mc.ingameplay();
 				pl.play(nick);
+				mc.stop();
 				mc.mainplay();
 			}else if(select==2) {
 		
