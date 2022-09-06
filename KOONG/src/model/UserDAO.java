@@ -262,7 +262,7 @@ public class UserDAO {
 				// 쿵야의 정보를 담을 수 있는 arraylist 만들기.
 				getCon();
 
-				String sql = "select u.ID, k.KOONG_NUM, k.KOONG_NAME, k.KOONG_POWER from MY_KOONG k,user_info u WHERE u.id = k.id and = ? ORDER BY KOONG_POWER";
+				String sql = "select u.ID, k.KOONG_NUM, k.KOONG_NAME, k.KOONG_POWER from MY_KOONG k,user_info u WHERE u.id = k.id and u.id = ? ORDER BY k.KOONG_POWER";
 
 				try {
 					psmt = conn.prepareStatement(sql);
@@ -271,10 +271,10 @@ public class UserDAO {
 					rs = psmt.executeQuery();
 
 					while (rs.next()) {
-						String idd = rs.getString("id");
-						int num = rs.getInt("");
-						String name = rs.getString(" ");
-						int power = rs.getInt("");
+						String idd = rs.getString(1);
+						int num = rs.getInt(2);
+						String name = rs.getString(3);
+						int power = rs.getInt(4);
 
 						koongDTO dto = new koongDTO(idd, num, name, power);
 						al.add(dto);
