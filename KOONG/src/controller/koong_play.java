@@ -119,6 +119,7 @@ public class koong_play {
 						mc.hitsound();
 						System.out.println("이 투구를 쳐내네요!!!\n");// 안타
 						res = 'a';
+						time();
 						sct = 0;
 						break;
 					}
@@ -132,6 +133,7 @@ public class koong_play {
 						mc.hitsound();
 						System.out.println("이 투구를 쳐내네요!!!\n");// 안타
 						res = 'a';
+						time();
 						sct = 0;
 						break;
 					}
@@ -143,6 +145,7 @@ public class koong_play {
 						mc.hitsound();
 						System.out.println(list.get(cnt).getName() + "! 공을 쳐냅니다! 안타!\n");// 안타
 						res = 'a';
+						time();
 						sct = 0;
 						break;
 					} else if (rate <= 10) {// 8,9,10이 나올 경우.
@@ -154,6 +157,7 @@ public class koong_play {
 					mc.hitsound();
 					System.out.println("안타를~ 쳤습니다!\n");// 안타
 					res = 'a';
+					time();
 					sct = 0;
 					break;
 				} else if (enemy_win_dif == 0 && my_win_dif > 50) {

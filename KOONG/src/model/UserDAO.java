@@ -484,27 +484,27 @@ public class UserDAO {
 			psmt2.setString(1, nick);
 			psmt2.setInt(2, n2);
 			psmt2.setString(3, nick);
-			psmt2.setInt(4, n1);
+			psmt2.setInt(4, n2);
 			
 			psmt3.setString(1, nick);
 			psmt3.setInt(2, n3);
 			psmt3.setString(3, nick);
-			psmt3.setInt(4, n1);
+			psmt3.setInt(4, n3);
 			
 			psmt4.setString(1, nick);
 			psmt4.setInt(2, n4);
 			psmt4.setString(3, nick);
-			psmt4.setInt(4, n1);
+			psmt4.setInt(4, n4);
 			
 			psmt5.setString(1, nick);
 			psmt5.setInt(2, n5);
 			psmt5.setString(3, nick);
-			psmt5.setInt(4, n1);
+			psmt5.setInt(4, n5);
 			
 			psmt6.setString(1, nick);
-			psmt6.setInt(2, n5);
+			psmt6.setInt(2, n6);
 			psmt6.setString(3, nick);
-			psmt6.setInt(4, n1);
+			psmt6.setInt(4, n6);
 			
 			psmt.executeUpdate();
 			psmt2.executeUpdate();
