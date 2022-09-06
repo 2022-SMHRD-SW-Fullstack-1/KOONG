@@ -50,7 +50,7 @@ public class koong_status implements koongstatus {
 		Ascii as = new Ascii();
 		while(true) {
 			System.out.println("===========================================");
-			System.out.println("    [1]대표 쿵야 설정        [2]창 닫기");
+			System.out.println(" [1]대표 쿵야 설정 [2]쿵야 자세히 보기 [3]창 닫기");
 			System.out.println("===========================================");
 			int choice = sc.nextInt();
 			if(choice==1) {
@@ -58,8 +58,13 @@ public class koong_status implements koongstatus {
 				String ya = sc.next();
 				dao.represent(ya,nick);
 				System.out.println(ya+"는 이제부터 대표쿵야!!");
-				
+			
 			}else if(choice == 2) {
+				System.out.println("자세히 보고싶은 쿵야를 불러주세요!!");
+				String ya = sc.next();
+				dao.zoom(ya);
+				
+			}else if(choice == 3) {
 				break;
 			}
 			
@@ -79,7 +84,7 @@ public class koong_status implements koongstatus {
 			for(int i = 0 ; i<=4 ; i++) {
 				System.out.println("==============================\n");
 				System.out.println(i+1+"위 [ "+resultlist.get(i).getId()+" ]\n");
-				System.out.print("<<대표 캐릭터>>");
+				System.out.println("<<대표 캐릭터>>");
 				asc.ascii(resultlist2.get(i).getMain_char());
 				System.out.println("보유 캐릭터 수 [ "+resultlist.get(i).getKoong_cnt()+" ]");
 			}
@@ -88,7 +93,7 @@ public class koong_status implements koongstatus {
 			for(int i = 0 ; i<=resultlist.size() ; i++) {
 				System.out.println("==============================\n");
 				System.out.println(i+1+"위 [ "+resultlist.get(i).getId()+" ]\n");
-				System.out.print("<<대표 캐릭터>>");
+				System.out.println("<<대표 캐릭터>>");
 				asc.ascii(resultlist2.get(i).getMain_char());		
 				System.out.println("보유 캐릭터 수 [ "+resultlist.get(i).getKoong_cnt()+" ]");
 			}

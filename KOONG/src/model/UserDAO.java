@@ -401,7 +401,6 @@ public class UserDAO {
 		public void zoom(String ya) {
 			
 			Ascii as = new Ascii();
-			
 			getCon();
 			int num=0;
 			
@@ -411,10 +410,10 @@ public class UserDAO {
 				psmt.setString(1, ya);
 			
 				rs = psmt.executeQuery();
-				num =rs.getInt(1);
 				
 				while(rs.next()) {
 					num = rs.getInt(1);	
+					
 				}
 				as.ascii(num);
 				
