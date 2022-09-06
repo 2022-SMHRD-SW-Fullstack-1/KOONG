@@ -72,7 +72,7 @@ public class UserDAO {
 		getCon();
 
 		String sql = "insert into user_info(ID, PASSWORD) values(?, ?)";
-		String sql2 = "update user_info set coupon = 5 where coupon is null";
+		String sql2 = "update user_info set coupon = 6 where coupon is null";
 
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -157,19 +157,43 @@ public class UserDAO {
 		koong_login log = new koong_login();
 		UserDTO con = new UserDTO(null);
 		Ascii ac = new Ascii();
+		Random rd = new Random();
 
 		String koong_name = "";
 		String koong_rate = "";
 		int koong_power = 0;
-
+		int koong_num = 0;
 		getCon();
 
 		try {
+			ArrayList<Integer> kn = new ArrayList<>(); // 쿵야의 넘버를 저장하는 배열
+			String sql5 = "select koong_num from my_koong where id = ? ";
+			psmt5 = conn.prepareStatement(sql5);
+			psmt5.setString(1, nick);
+			rs = psmt5.executeQuery();
+
+			while (rs.next()) {// 해당 아이디가 갖고 있는 쿵넘버 전부 저장
+				kn.add(rs.getInt(1));
+			}
+			
+			if (kn.size() == 0) {
+				koong_num = rd.nextInt(12) + 1;
+			} else {
+				boolean check = false;
+				do {
+					check = false;
+					koong_num = rd.nextInt(12) + 1;
+
+					for (int knlist : kn) {
+						if (knlist == koong_num) {
+							check = true;
+						}
+					}
+				} while (check);
+			}
+
 			String sql = "select koong_name, koong_rate from koong_info where koong_num = ? ";
 			psmt = conn.prepareStatement(sql);
-
-			Random rd = new Random();
-			int koong_num = rd.nextInt(12) + 1;
 
 			psmt.setInt(1, koong_num);
 
@@ -443,45 +467,45 @@ public class UserDAO {
 			String sql4 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
 			String sql5 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
 			String sql6 = "update my_koong set koong_power = (select koong_power+1 from my_koong where id=? and koong_num = ?) where id = ?";
-			
+
 			psmt = conn.prepareStatement(sql1);
 			psmt2 = conn.prepareStatement(sql2);
 			psmt3 = conn.prepareStatement(sql3);
 			psmt4 = conn.prepareStatement(sql4);
 			psmt5 = conn.prepareStatement(sql5);
 			psmt6 = conn.prepareStatement(sql6);
-			
+
 			psmt.setString(1, nick);
 			psmt.setInt(2, n1);
 			psmt.setString(3, nick);
-			
+
 			psmt2.setString(1, nick);
 			psmt2.setInt(2, n2);
 			psmt2.setString(3, nick);
-			
+
 			psmt3.setString(1, nick);
 			psmt3.setInt(2, n3);
 			psmt3.setString(3, nick);
-			
+
 			psmt4.setString(1, nick);
 			psmt4.setInt(2, n4);
 			psmt4.setString(3, nick);
-			
+
 			psmt5.setString(1, nick);
 			psmt5.setInt(2, n5);
 			psmt5.setString(3, nick);
-			
+
 			psmt6.setString(1, nick);
 			psmt6.setInt(2, n5);
 			psmt6.setString(3, nick);
-			
+
 			psmt.executeUpdate();
 			psmt2.executeUpdate();
 			psmt3.executeUpdate();
 			psmt4.executeUpdate();
 			psmt5.executeUpdate();
 			psmt6.executeUpdate();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
