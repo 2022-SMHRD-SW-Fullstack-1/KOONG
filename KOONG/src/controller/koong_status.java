@@ -23,7 +23,9 @@ public class koong_status implements koongstatus {
 				dao.browse_koong(nick);
 				
 			}else {
-				System.out.println("쿠폰이 없습니다");
+				System.out.println("=====================================================================================");
+				System.out.println("\t\t๐·°(৹˃ᗝ˂৹)°·๐\t\t  쿠폰이 없어요  \t\t๐·°(৹˃ᗝ˂৹)°·๐");
+				System.out.println("=====================================================================================");
 			}
 			
 		
@@ -40,7 +42,8 @@ public class koong_status implements koongstatus {
 		
 		resultlist = dao.havekoong(nick);
 		
-		System.out.println("[쿵야이름]\t[쿵야등급]\t[쿵야파워]");
+		System.out.println("=====================================================================================");
+		System.out.println("[쿵야이름]\t\t[쿵야등급]\t\t[쿵야파워]");
 		for(int i =0; i<resultlist.size(); i++) {
 			System.out.print(resultlist.get(i).getKoong_name()+"\t\t");
 			System.out.print("   "+resultlist.get(i).getKoong_rate()+"\t\t");
@@ -90,7 +93,7 @@ public class koong_status implements koongstatus {
 			}
 			
 		}else {
-			for(int i = 0 ; i<=resultlist.size() ; i++) {
+			for(int i = 0 ; i<resultlist.size() ; i++) {
 				System.out.println("==============================\n");
 				System.out.println(i+1+"위 [ "+resultlist.get(i).getId()+" ]\n");
 				System.out.println("<<대표 캐릭터>>");

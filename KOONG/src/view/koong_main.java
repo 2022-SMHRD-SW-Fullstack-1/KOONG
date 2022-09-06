@@ -41,7 +41,9 @@ public class koong_main {
 				nick = log.conLogin(id, pw);
 
 				if (nick != null) {
-					System.out.println("환영합니다!" + nick + "님");
+					System.out.println("=====================================================================================");
+					System.out.println("\t\t\t환영합니다!\t\t" + nick + "님");
+					System.out.println("=====================================================================================");
 					break; //로그인 성공시 반복문 나감
 				} else {
 					System.out.println("로그인 실패");
@@ -51,16 +53,18 @@ public class koong_main {
 				System.out.println("==========================================");
 				System.out.println("Ｏ(≧∇≦)Ｏ\t\t 회원가입 \t\to(≧∇≦o)");
 				System.out.println("==========================================");
-				System.out.println("가입 할 아이디 : ");
+				System.out.print("가입 할 아이디 : ");
 				String id = sc.next();
-				System.out.println("가입 할 패스워드 : ");
+				System.out.print("가입 할 패스워드 : ");
 				String pw = sc.next();
 
 				result = log.conInsert(id, pw);
 				if (result > 0) {
 					System.out.println("✿˘◡˘✿\t\t 가입 완료!! 환영합니다 \t\t✿˘◡˘✿ ");
 				} else {
-					System.out.println("가입 실패");
+				
+					System.out.println("\t๐·°(৹˃ᗝ˂৹)°·๐\t\t  가입에 실패했어요  \t\t\t๐·°(৹˃ᗝ˂৹)°·๐");
+					System.out.println("=====================================================================================");
 				}
 			}
 		}
@@ -77,7 +81,7 @@ public class koong_main {
 		while(true) {
 			
 			//
-			System.out.print("[1]게임 시작 [2]선수 뽑기 [3]내 선수 확인 [4]랭킹 확인   >>  ");
+			System.out.print("[1]게임 시작 [2]선수 뽑기 [3]내 선수 확인 [4]랭킹 확인 [5]게임 종료  >>  ");
 			int select = sc.nextInt();
 			
 			if(select==1) {
@@ -96,6 +100,11 @@ public class koong_main {
 				con.my_Koong(nick);
 			}else if(select==4) {
 				con.ranking();
+			}else if(select==5) {
+				System.out.println("=====================================================================================");
+				System.out.println("\t\tෆ⸒⸒⸜( ˶'ᵕ'˶)⸝ \t\t  다음에 또 봐요! \t\t ෆ⸒⸒⸜( ˶'ᵕ'˶)⸝");
+				System.out.println("=====================================================================================");
+				break;
 			}
 
 		}
