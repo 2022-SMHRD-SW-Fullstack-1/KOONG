@@ -205,11 +205,11 @@ public class UserDAO {
 				koong_name = rs.getString(1);
 				koong_rate = rs.getString(2);
 
-				if (koong_rate.equals("S")) {
+				if (koong_num == 1||koong_num == 2||koong_num == 3) {
 					koong_power = rd.nextInt(40) + 61;
-				} else if (koong_rate.equals("A")) {
+				} else if (koong_num == 4||koong_num == 5||koong_num == 6||koong_num == 7||koong_num == 8||koong_num == 9||koong_num == 10) {
 					koong_power = rd.nextInt(60) + 21;
-				} else if (koong_rate.equals("F")) {
+				} else if (koong_num == 11||koong_num == 12) {
 					koong_power = rd.nextInt(40) + 1;
 				}
 
