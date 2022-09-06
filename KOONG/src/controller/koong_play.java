@@ -172,6 +172,7 @@ public class koong_play {
 
 			if (sct == 3) {// 스트라이크 3번 맞았을 때 아웃카운트 증가
 				time();
+				time();
 				mc.outsound();
 				System.out.println("삼진 아웃!");
 				oct++;
