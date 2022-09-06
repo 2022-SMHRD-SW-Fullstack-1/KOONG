@@ -113,15 +113,11 @@ public class koong_play {
 					int rate = rd.nextInt(10) + 1; // 적이 우세임에도 안타를 칠 수도 있는 확률
 					if (rate < 8) {
 						mc.strikesound();
-						System.out.println("Strike!");// 스트라이크
+						System.out.println("Strike!\n");// 스트라이크
 						sct++;
-						if (sct == 3) {// 스트라이크 3번 맞았을 때 아웃카운트 증가
-							out(oct);
-							sct = 0;
-						}
 					} else if (rate <= 10) {// 8,9,10이 나올 경우.
 						mc.hitsound();
-						System.out.println("이 투구를 쳐내네요!!!");// 안타
+						System.out.println("이 투구를 쳐내네요!!!\n");// 안타
 						res = 'a';
 						sct = 0;
 						break;
@@ -130,113 +126,113 @@ public class koong_play {
 					int rate = rd.nextInt(10) + 1;
 					if (rate <= 9) {
 						mc.strikesound();
-						System.out.println("Strike!");// 스트라이크
+						System.out.println("Strike!\n");// 스트라이크
 						sct++;
-						if (sct == 3) {// 스트라이크 3번 맞았을 때 아웃카운트 증가
-							out(oct);
-							sct = 0;
-						}
 					} else if (rate <= 10) {
 						mc.hitsound();
-						System.out.println("이 투구를 쳐내네요!!!");// 안타
+						System.out.println("이 투구를 쳐내네요!!!\n");// 안타
 						res = 'a';
 						sct = 0;
 						break;
 					}
 				}
 
-			if (enemy_win_dif == 0 && my_win_dif <= 15) {
-				int rate = rd.nextInt(10) + 1; // 내가 우세임에도 스트라이크를 당할 확률
-				if (rate < 8) {
+				if (enemy_win_dif == 0 && my_win_dif <= 15) {
+					int rate = rd.nextInt(10) + 1; // 내가 우세임에도 스트라이크를 당할 확률
+					if (rate < 8) {
+						mc.hitsound();
+						System.out.println(list.get(cnt).getName() + "! 공을 쳐냅니다! 안타!\n");// 안타
+						res = 'a';
+						sct = 0;
+						break;
+					} else if (rate <= 10) {// 8,9,10이 나올 경우.
+						mc.strikesound();
+						System.out.println("Strike!\n");// 스트라이크
+						sct++;
+					}
+				} else if (enemy_win_dif == 0 && my_win_dif <= 50) {
 					mc.hitsound();
-					System.out.println(list.get(cnt).getName() + "! 공을 쳐냅니다! 안타!");// 안타
+					System.out.println("안타를~ 쳤습니다!\n");// 안타
 					res = 'a';
 					sct = 0;
 					break;
-				} else if (rate <= 10) {// 8,9,10이 나올 경우.
-					mc.strikesound();
-					System.out.println("Strike!");// 스트라이크
-					sct++;
-					if (sct == 3) {// 스트라이크 3번 맞았을 때 아웃카운트 증가
-						out(oct);
-						sct = 0;
-					}
-				}
-			} else if (enemy_win_dif == 0 && my_win_dif <= 50) {
-				mc.hitsound();
-				System.out.println("안타를~ 쳤습니다!");// 안타
-				res = 'a';
-				sct = 0;
-				break;
-			} else if (enemy_win_dif == 0 && my_win_dif > 50) {
-				mc.hitsound();
-				time();
-				time();
-				mc.homerunsound();
-				System.out.println("담장을 넘어갑니다!! 홈런~!");// 홈런
-				res = 'h';
-				sct = 0;
-				break;
-			}
-
-			if (enemy_win_dif == my_win_dif) { // 두 선수가 능력치가 같을때 6:4확률로 설정.
-				System.out.println("라이벌 간의 대결 승자는?!");
-				int rate = rd.nextInt(10) + 1;
-				if (rate <= 4) {
-					mc.strikesound();
-					System.out.println("Strike!");// 스트라이크
-					sct++;
-					if (sct == 3) {// 스트라이크 3번 맞았을 때 아웃카운트 증가
-						out(oct);
-						sct = 0;
-					}
-				} else if (rate <= 10) {
+				} else if (enemy_win_dif == 0 && my_win_dif > 50) {
 					mc.hitsound();
-					System.out.println("라이벌간의 뜨거운 싸움!" + list.get(cnt).getName() + "선수가 안타를 쳐냅니다~!");// 안타
-					res = 'a';
-					sct = 0;
 					time();
+					time();
+					mc.homerunsound();
+					System.out.println("담장을 넘어갑니다!! 홈런~!\n");// 홈런
+					time();
+					res = 'h';
+					sct = 0;
 					break;
 				}
+
+				if (enemy_win_dif == my_win_dif) { // 두 선수가 능력치가 같을때 6:4확률로 설정.
+					System.out.println("라이벌 간의 대결 승자는?!");
+					int rate = rd.nextInt(10) + 1;
+					if (rate <= 4) {
+						mc.strikesound();
+						System.out.println("Strike!\n");// 스트라이크
+						sct++;
+					} else if (rate <= 10) {
+						mc.hitsound();
+						System.out.println("라이벌간의 뜨거운 싸움!" + list.get(cnt).getName() + "선수가 안타를 쳐냅니다~!\n");// 안타
+						res = 'a';
+						sct = 0;
+						time();
+						break;
+					}
+				}
+			} // 타격 for문
+
+			if (sct == 3) {// 스트라이크 3번 맞았을 때 아웃카운트 증가
+				time();
+				time();
+				mc.outsound();
+				System.out.println("삼진 아웃!");
+				time();
+				time();
+				
+				sct = 0;
+				oct++;
 			}
-		} // 타격 for문 끝
 
-		if (oct == 3) {// 3아웃시 게임종료
-			System.out.println("3아웃으로 패배하였습니다.");
-			dao.Training(nick, list.get(0).getNum(), list.get(1).getNum(), list.get(2).getNum(), list.get(3).getNum(),
-					list.get(4).getNum(), list.get(5).getNum());
-			break;
-		}
-		cnt++;
-		// 주자 표시
-		// 카운트 두개 생성 후 res 값에 따라 증가,
-		// 조건문으로 문자열을 받아 주자 표시
+			if (oct == 3) {// 3아웃시 게임종료
+				System.out.println("3아웃으로 패배하였습니다.");
+				dao.Training(nick, list.get(0).getNum(), list.get(1).getNum(), list.get(2).getNum(),
+						list.get(3).getNum(), list.get(4).getNum(), list.get(5).getNum());
+				break;
+			}
+			cnt++;
+			// 주자 표시
+			// 카운트 두개 생성 후 res 값에 따라 증가,
+			// 조건문으로 문자열을 받아 주자 표시
 
-		if (res == 'a') {
-			run_cnt++;// 주자 추가.
-		} else if (res == 'h') {
-			score++;// 홈런을 친 본인 증가.
-			for (int i = 0; i < run_cnt; i++) {// 주자수만큼 스코어 증가.
+			if (res == 'a') {
+				run_cnt++;// 주자 추가.
+			} else if (res == 'h') {
+				score++;// 홈런을 친 본인 증가.
+				for (int i = 0; i < run_cnt; i++) {// 주자수만큼 스코어 증가.
+					score++;
+				}
+				run_cnt = 0;
+			}
+
+			if (run_cnt >= 4) {// 안타를 쳐서 주자가 4명이 될때 3명으로 줄이고 점수 1점 추가.
+				run_cnt = 3;
 				score++;
 			}
-			run_cnt = 0;
-		}
 
-		if (run_cnt >= 4) {// 안타를 쳐서 주자가 4명이 될때 3명으로 줄이고 점수 1점 추가.
-			run_cnt = 3;
-			score++;
-		}
-
-		// 점수를 10점 이상 냈을때 쿠폰 1개발급 -> 종료
-		if (score >= 10) {
-			dao.PlusCoupon(nick);
-			System.out.println("게임에서 승리하였습니다.");
-			dao.Training(nick, list.get(0).getNum(), list.get(1).getNum(), list.get(2).getNum(), list.get(3).getNum(),
-					list.get(4).getNum(), list.get(5).getNum());
-			break;
-		}
-
-	} // while문 끝 중괄호
+			// 점수를 10점 이상 냈을때 쿠폰 1개발급 -> 종료
+			if (score >= 10) {
+				dao.PlusCoupon(nick);
+				System.out.println("게임에서 승리하였습니다.");
+				dao.Training(nick, list.get(0).getNum(), list.get(1).getNum(), list.get(2).getNum(),
+						list.get(3).getNum(), list.get(4).getNum(), list.get(5).getNum());
+				break;
+			}
+		} // while문 끝 중괄호
 
 	}// play 메서드 종료 중괄호
 
@@ -246,16 +242,6 @@ public class koong_play {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void out(int oct) {		
-		time();
-		time();
-		mc.outsound();
-		System.out.println("삼진 아웃!");
-		oct++;
-		time();
-		time();
 	}
 
 }
