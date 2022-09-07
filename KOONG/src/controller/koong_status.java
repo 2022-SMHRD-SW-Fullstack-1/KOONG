@@ -17,14 +17,14 @@ public class koong_status implements koongstatus {
 	public void draw(String nick) {
 		
 			if(dao.coupon_cnt(nick)>0) {
-				System.out.print("쿠폰을 사용하시겠습니까? (y/n) >> ");
+				System.out.print("쿠폰을 사용하고싶으면 아무키나 눌러주세요 >> ");
 				String cpn_select = sc.next();
 				
 				dao.browse_koong(nick);
 				
 			}else {
 				System.out.println("=====================================================================================");
-				System.out.println("\t\t๐·°(৹˃ᗝ˂৹)°·๐\t\t  쿠폰이 없어요  \t\t๐·°(৹˃ᗝ˂৹)°·๐");
+				System.out.println("\t\t ·°( ˃ᗝ˂ )°· \t\t  쿠폰이 없어요  \t\t ·°(৹˃ᗝ˂৹)°· ");
 				System.out.println("=====================================================================================");
 			}
 			

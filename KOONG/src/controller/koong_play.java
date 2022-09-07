@@ -218,8 +218,8 @@ public class koong_play {
 			if (oct == 3) {// 3아웃시 게임종료
 				System.out.println();
 				System.out.println("======================================================");
-				System.out.println("\\t๐·°(৹˃ᗝ˂৹)°·๐\\t  3아웃으로 패배했어요  \\t\\t๐·°(৹˃ᗝ˂৹)°·๐");
-				System.out.println("✿˘◡˘✿\\b 걱정마세요 출전한 선수들의 능력치가 1 상승했어요!! d\\✿˘◡˘✿");
+				System.out.println("\\t ·°( ˃ᗝ˂ )°· \\t  3아웃으로 패배했어요  \\t\\t ·°( ˃ᗝ˂ )°· ");
+				System.out.println("(^ _ ^)b  걱정마세요 출전한 선수들의 능력치가 1 상승했어요!!  d(^ _ ^)");
 				System.out.println("======================================================");
 				dao.Training(nick, list.get(0).getNum(), list.get(1).getNum(), list.get(2).getNum(),
 						list.get(3).getNum(), list.get(4).getNum(), list.get(5).getNum());
