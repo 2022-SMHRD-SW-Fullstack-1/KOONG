@@ -31,6 +31,7 @@ public class Ascii {
 					+ "     |_|       |_|\r\n"
 					+ "     |___________|");
 			
+			
 		
 		}else if(num == 2) {
 //			System.out.println( 
