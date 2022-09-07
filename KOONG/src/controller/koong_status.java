@@ -45,7 +45,7 @@ public class koong_status implements koongstatus {
 		System.out.println("=====================================================================================");
 		System.out.println("[쿵야이름]\t[쿵야등급]\t[쿵야파워]");
 		for(int i =0; i<resultlist.size(); i++) {
-			System.out.print(resultlist.get(i).getKoong_name()+"\t\t");
+			System.out.print(resultlist.get(i).getKoong_name()+"\t");
 			System.out.print("   "+resultlist.get(i).getKoong_rate()+"\t\t");
 			System.out.print("   "+resultlist.get(i).getKoong_power());
 			System.out.println();
@@ -83,7 +83,7 @@ public class koong_status implements koongstatus {
 		resultlist = dao.main_koong();
 		resultlist2 = dao.myMainChar();
 		
-		if(resultlist.size()>=4) {
+		if(resultlist.size()>4) {
 			for(int i = 0 ; i<=4 ; i++) {
 				System.out.println("=====================================================================================\n");
 				System.out.println(i+1+"위 [ "+resultlist.get(i).getId()+" ]\n");

@@ -13,10 +13,10 @@ public class koong_play {
 
 	Scanner sc = new Scanner(System.in);
 	Random rd = new Random();
-	Ascii ac = new Ascii();
 	musiccontroller mc = new musiccontroller();
 
-	UserDAO dao = new UserDAO();
+	Ascii ac = new Ascii(); // 캐릭터의 아스키코드 값을 저장한 모델
+	UserDAO dao = new UserDAO(); // sql문 연결을 위한 모델
 
 	public void play(String nick) {
 
@@ -31,18 +31,15 @@ public class koong_play {
 		player = dao.select(nick);
 		System.out.println("=====================================================================================");
 		System.out.println();
-		System.out.println("┌─────────────────────────────────┐\r\n"
-				+ "     "+player.get(0).getId() + "님의 보유 선수 목록    \r\n"
-				+ "└─────────────────────────────────┘\r\n");
-		
-		//System.out.println(player.get(0).getId() + "님의 보유 선수 목록");
-		//System.out.println("=====================================================================================");
+		System.out.println("┌─────────────────────────────────┐\r\n" + "     " + player.get(0).getId()
+				+ "님의 보유 선수 목록    \r\n" + "└─────────────────────────────────┘\r\n");
+
 		for (int i = 0; i < player.size(); i++) {
-			System.out.print("< 선택" + (i + 1) + " >\n[등번호]    [쿵야명]    [타격력]"+ "\n   " + player.get(i).getNum() + "       " + player.get(i).getName());
-			System.out.println("     \t"+player.get(i).getPower() + "\n");
+			System.out.println("< 선택" + (i + 1) + " >\n[등번호]    [쿵야명]    [타격력]" + "\n   " + player.get(i).getNum()
+					+ "       " + player.get(i).getName() + "\t  " + player.get(i).getPower() + "\n");
 		}
 
-		// 5명을 선발하는 과정
+		// 6명을 선발하는 과정
 		ArrayList<koongDTO> list = new ArrayList<>();
 		System.out.println("1번부터 6번 타석까지 선택해주세요.(선택번호를 입력)");
 		for (int i = 0; i < 6; i++) {
@@ -218,7 +215,7 @@ public class koong_play {
 			if (oct == 3) {// 3아웃시 게임종료
 				System.out.println();
 				System.out.println("======================================================");
-				System.out.println("\\t ·°( ˃_˂ )°· \\t  3아웃으로 패배했어요  \\t\\t ·°( ˃_˂ )°· ");
+				System.out.println("      ( ㅠ_ㅠ )        3아웃으로 패배했어요           ( ㅠ_ㅠ )   ");
 				System.out.println("(^ _ ^)b  걱정마세요 출전한 선수들의 능력치가 1 상승했어요!!  d(^ _ ^)");
 				System.out.println("======================================================");
 				dao.Training(nick, list.get(0).getNum(), list.get(1).getNum(), list.get(2).getNum(),
@@ -249,6 +246,7 @@ public class koong_play {
 			if (score >= 10) {
 				dao.PlusCoupon(nick);
 				System.out.println("게임에서 승리하였습니다.");
+				System.out.println("쿠폰이 1개 지급되었습니다!!!");
 				dao.Training(nick, list.get(0).getNum(), list.get(1).getNum(), list.get(2).getNum(),
 						list.get(3).getNum(), list.get(4).getNum(), list.get(5).getNum());
 				break;
