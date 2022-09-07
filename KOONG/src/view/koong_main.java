@@ -1,11 +1,13 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.koong_login;
 import controller.koong_play;
 import controller.koong_status;
 import model.UserDAO;
+import model.koongDTO;
 import music.musiccontroller;
 
 public class koong_main {
@@ -30,7 +32,7 @@ public class koong_main {
 					+ "|__|__||_____||__||__||_____| |__|__||_____||_____||__|__||___  ||___  ||___._||__||__||__|\r\n"
 					+ "                                                          |_____||_____|                   ");
 			System.out.println(
-					  "⠀            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀  ⠀⠀⢀⣤⣤⠀⠀⠀⠀⠀⣠⣤⣄⠀⠀⠀⠀⠀⠀\r\n"
+					  "⠀            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀  ⠀ ⠀⢀⣤⣤⠀⠀⠀⠀⠀⣠⣤⣄⠀⠀⠀⠀⠀⠀\r\n"
 					+ "⠀            ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⣿⣿⣿⣷⡀⠀⠀⣼⣿⣿⣿⡆⠀⠀⠀⠀⠀\r\n"
 					+ "⠀            ⠀⠀⠀⠀⣠⣶⣶⣿⡖⠒⠒⠒⠠⠀⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⢀⡠⠤⠤⠤⢄⠀⠀⠀⠀⠀⠀⠀⠀ ⠀  ⣿⣿⣿⣧⣀⣰⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀\r\n"
 					+ "⠀            ⠀⠀⠀⢀⣿⣿⣿⠿⠇⠀⠀⠀⠀⠀⠘⢢⠀⠀⠀⢀⣀⣀⣀⡀⢠⠊⠁⠀⠀⠀⠀⠀⠈⠑⢄⢀⣀⡀⣀⡀⠀⠀  ⣿⡿⠿⠋⠉⠉⠉⠉⠻⢿⣿⡇⠀⠀⠀⠀⠀\r\n"
@@ -111,10 +113,18 @@ public class koong_main {
 			int select = sc.nextInt();
 			
 			if(select==1) {
+				ArrayList<koongDTO> player = new ArrayList<>();
+				player = dao.select(nick); //초기 보유 쿵야를 체크하기 위한 배열에 쿵야 정보 저장.
+						
+				if(player.size()>=6) { //배열에 들어있는 정보수로 소유한 쿵야 체크.
 				mc.ingameplay();
 				pl.play(nick);
 				mc.stop();
 				mc.mainplay();
+				}
+				else {
+					System.out.println("선수가 6명 이상이어야 게임을 할 수 있어요!!");
+				}
 			}else if(select==2) {
 		
 					con.draw(nick);

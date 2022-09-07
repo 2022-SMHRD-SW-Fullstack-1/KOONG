@@ -38,8 +38,8 @@ public class koong_play {
 		//System.out.println(player.get(0).getId() + "님의 보유 선수 목록");
 		//System.out.println("=====================================================================================");
 		for (int i = 0; i < player.size(); i++) {
-			System.out.print("선택" + (i + 1) + "\n" + player.get(i).getNum() + ". " + player.get(i).getName());
-			System.out.println(" / 타 격 력 : " + player.get(i).getPower() + "\n");
+			System.out.print("< 선택" + (i + 1) + " >\n[등번호]\t[쿵야명]\t[타격력]"+ "\n  " + player.get(i).getNum() + ".\t" + player.get(i).getName());
+			System.out.println("\t  "+player.get(i).getPower() + "\n");
 		}
 
 		// 5명을 선발하는 과정
