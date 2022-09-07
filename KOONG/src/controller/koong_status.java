@@ -43,7 +43,7 @@ public class koong_status implements koongstatus {
 		resultlist = dao.havekoong(nick);
 		
 		System.out.println("=====================================================================================");
-		System.out.println("[쿵야이름]\t\t[쿵야등급]\t\t[쿵야파워]");
+		System.out.println("[쿵야이름]\t[쿵야등급]\t[쿵야파워]");
 		for(int i =0; i<resultlist.size(); i++) {
 			System.out.print(resultlist.get(i).getKoong_name()+"\t\t");
 			System.out.print("   "+resultlist.get(i).getKoong_rate()+"\t\t");
@@ -85,7 +85,7 @@ public class koong_status implements koongstatus {
 		
 		if(resultlist.size()>=4) {
 			for(int i = 0 ; i<=4 ; i++) {
-				System.out.println("==============================\n");
+				System.out.println("=====================================================================================\n");
 				System.out.println(i+1+"위 [ "+resultlist.get(i).getId()+" ]\n");
 				System.out.println("<<대표 캐릭터>>");
 				asc.ascii(resultlist2.get(i).getMain_char());
@@ -94,7 +94,7 @@ public class koong_status implements koongstatus {
 			
 		}else {
 			for(int i = 0 ; i<resultlist.size() ; i++) {
-				System.out.println("==============================\n");
+				System.out.println("=====================================================================================\n");
 				System.out.println(i+1+"위 [ "+resultlist.get(i).getId()+" ]\n");
 				System.out.println("<<대표 캐릭터>>");
 				asc.ascii(resultlist2.get(i).getMain_char());		

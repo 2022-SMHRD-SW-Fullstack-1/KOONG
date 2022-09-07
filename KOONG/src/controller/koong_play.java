@@ -29,8 +29,14 @@ public class koong_play {
 		// 내가 보유한 선수들을 모두 출력(번호, 이름, 능력치)
 		ArrayList<koongDTO> player = new ArrayList<>();
 		player = dao.select(nick);
-
-		System.out.println(player.get(0).getId() + "님의 보유 선수 목록");
+		System.out.println("=====================================================================================");
+		System.out.println();
+		System.out.println("┌─────────────────────────────────┐\r\n"
+				+ "         "+player.get(0).getId() + "님의 보유 선수 목록\r\n"
+				+ "└─────────────────────────────────┘\r\n");
+		
+		//System.out.println(player.get(0).getId() + "님의 보유 선수 목록");
+		//System.out.println("=====================================================================================");
 		for (int i = 0; i < player.size(); i++) {
 			System.out.print("선택" + (i + 1) + "\n" + player.get(i).getNum() + ". " + player.get(i).getName());
 			System.out.println(" / 타 격 력 : " + player.get(i).getPower() + "\n");
@@ -40,7 +46,7 @@ public class koong_play {
 		ArrayList<koongDTO> list = new ArrayList<>();
 		System.out.println("1번부터 6번 타석까지 선택해주세요.(선택번호를 입력)");
 		for (int i = 0; i < 6; i++) {
-			System.out.println(i + 1 + "번째 타자 선발 : ");
+			System.out.print(i + 1 + "번째 타자 선발 : ");
 			int select = sc.nextInt();
 			list.add(player.get(select - 1));
 			System.out.println(i + 1 + "번째 타자 : " + player.get(select - 1).getName() + "\n");
@@ -56,17 +62,21 @@ public class koong_play {
 			}
 
 			// 첫번째 선수 등장 배열 0번째부터 띄워줌.
-			System.out.println("======================================================");
+			System.out.println("===========================");
 			ac.ascii(list.get(cnt).getNum());
 			System.out.println((cnt + 1) + "번 타자!!\t" + list.get(cnt).getName() + "선수 ~ !");
 
-			System.out.println("우리팀의 상대 투수!");
+			System.out.println("     _  _    ___ \r\n"
+					+ "    ( \\/ )  / __)\r\n"
+					+ "     \\  /   \\__ \\\r\n"
+					+ "      \\/    (___/");
 
 			// 적투수의 정체를 밝히기
+			System.out.print("     악당투수! 등장!\n");
 			ac.ascii(13); // 적 투수의 아스키코드
-			System.out.print("악당투수! 등장!\n");
-			System.out.print("투 구 력 : " + enemy_status + "\n");
-
+			System.out.print("    <<투 구 력 : " + enemy_status + ">>\n");
+			System.out.println("===========================");
+			
 			// 내선수와 적투수의 능력치 차이 계산 후(스트라이크, 안타, 홈런 계산)
 			int enemy_win_dif = 0; // 적이 능력치가 우세할 때
 			int my_win_dif = 0; // 아군이 능력치가 우세할 떄
@@ -82,21 +92,23 @@ public class koong_play {
 
 				System.out.println("strike count : "); // 스트라이크 카운트 표시
 				for (int j = 0; j < sct; j++) {
-					System.out.print("●");
+					System.out.print("●  ");
 				}
 				for (int k = 3; k > sct; k--) {
-					System.out.print("○");
+					System.out.print("○  ");
 				}
 
 				System.out.println("\nout count : "); // 아웃 카운트 표시
 				for (int j = 0; j < oct; j++) {
-					System.out.print("●");
+					System.out.print("●  ");
 				}
 				for (int k = 3; k > oct; k--) {
-					System.out.print("○");
+					System.out.print("○  ");
 				}
 
-				System.out.print("\n현재 점수는 " + score + "점! ");
+				System.out.println("\n======================================================");
+				System.out.print("현재 점수는 " + score + "점! ");
+				System.out.println("\n======================================================");
 				if (run_cnt == 1) {
 					System.out.println("주자 1루!");
 				} else if (run_cnt == 2) {
@@ -105,7 +117,7 @@ public class koong_play {
 					System.out.println("주자 만루!");
 				}
 
-				System.out.println("\n9번을 눌러 타격하기.");// 타격음 효과 추가
+				System.out.println("\n9번을 눌러 타격하세요!");// 타격음 효과 추가
 				int hit = sc.nextInt();
 				time();
 
