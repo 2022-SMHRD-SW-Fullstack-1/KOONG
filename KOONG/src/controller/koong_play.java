@@ -32,14 +32,14 @@ public class koong_play {
 		System.out.println("=====================================================================================");
 		System.out.println();
 		System.out.println("┌─────────────────────────────────┐\r\n"
-				+ "         "+player.get(0).getId() + "님의 보유 선수 목록\r\n"
+				+ "     "+player.get(0).getId() + "님의 보유 선수 목록    \r\n"
 				+ "└─────────────────────────────────┘\r\n");
 		
 		//System.out.println(player.get(0).getId() + "님의 보유 선수 목록");
 		//System.out.println("=====================================================================================");
 		for (int i = 0; i < player.size(); i++) {
-			System.out.print("< 선택" + (i + 1) + " >\n[등번호]\t[쿵야명]\t[타격력]"+ "\n  " + player.get(i).getNum() + ".\t" + player.get(i).getName());
-			System.out.println("\t  "+player.get(i).getPower() + "\n");
+			System.out.print("< 선택" + (i + 1) + " >\n[등번호]    [쿵야명]    [타격력]"+ "\n   " + player.get(i).getNum() + "       " + player.get(i).getName());
+			System.out.println("     \t"+player.get(i).getPower() + "\n");
 		}
 
 		// 5명을 선발하는 과정
@@ -218,7 +218,7 @@ public class koong_play {
 			if (oct == 3) {// 3아웃시 게임종료
 				System.out.println();
 				System.out.println("======================================================");
-				System.out.println("\\t ·°( ˃ᗝ˂ )°· \\t  3아웃으로 패배했어요  \\t\\t ·°( ˃ᗝ˂ )°· ");
+				System.out.println("\\t ·°( ˃_˂ )°· \\t  3아웃으로 패배했어요  \\t\\t ·°( ˃_˂ )°· ");
 				System.out.println("(^ _ ^)b  걱정마세요 출전한 선수들의 능력치가 1 상승했어요!!  d(^ _ ^)");
 				System.out.println("======================================================");
 				dao.Training(nick, list.get(0).getNum(), list.get(1).getNum(), list.get(2).getNum(),

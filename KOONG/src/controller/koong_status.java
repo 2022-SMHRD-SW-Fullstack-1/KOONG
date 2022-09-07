@@ -24,7 +24,7 @@ public class koong_status implements koongstatus {
 				
 			}else {
 				System.out.println("=====================================================================================");
-				System.out.println("\t\t ·°( ˃ᗝ˂ )°· \t\t  쿠폰이 없어요  \t\t ·°(৹˃ᗝ˂৹)°· ");
+				System.out.println("\t\t ·°( ˃_˂ )°· \t\t  쿠폰이 없어요  \t\t ·°( ˃_˂ )°· ");
 				System.out.println("=====================================================================================");
 			}
 			
