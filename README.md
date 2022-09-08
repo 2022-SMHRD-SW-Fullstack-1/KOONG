@@ -1,5 +1,5 @@
 # 쿵야구
-!https://github.com/2022-SMHRD-SW-Fullstack-1/KOONG/issues/6#issue-1365398252
+https://github.com/2022-SMHRD-SW-Fullstack-1/KOONG/issues/6#issue-1365398252
 
 Eclipse와 SQL을 사용하여 게임 야채부락리 ip를 이용한 야구 게임 만들기
 
