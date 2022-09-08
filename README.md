@@ -63,6 +63,7 @@ Eclipse와 SQL을 사용하여 게임 야채부락리 ip를 이용한 야구 게
 # 시연화면
 [![image](https://user-images.githubusercontent.com/104156881/189014927-d393ab41-47ad-47ab-85fe-2ec1755c0c54.png)](https://www.youtube.com/watch?v=RBp4r4_UO0k)
 
+<눌러서 영상 재생>
 
 # 일정
 날짜|내용
